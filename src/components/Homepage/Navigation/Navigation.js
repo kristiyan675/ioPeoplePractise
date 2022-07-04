@@ -7,8 +7,9 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
-import Logo from "../../images/logo.svg";
+import Logo from "../../../images/logo.svg";
 import "./Navigation.scss";
+import classes from "./Navigation.module.scss";
 const Navigation = (props) => {
   return (
     <Navbar expand="lg" bg="primary" variant="dark">
@@ -35,7 +36,10 @@ const Navigation = (props) => {
             <NavLink to="/" className="nav-link">
               Contacts
             </NavLink>
-            <NavDropdown title={<Image src={Logo} width="20%" roundedCircle={true}/>} id="basic-nav-dropdown">
+            <NavDropdown
+              title={<Image src={Logo} width="20%" roundedCircle={true} />}
+              id="basic-nav-dropdown"
+            >
               <NavDropdown.Item eventKey="1">Log Out</NavDropdown.Item>
             </NavDropdown>
           </Nav>

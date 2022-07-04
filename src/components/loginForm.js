@@ -4,10 +4,9 @@ import UserContext from '../store/userContext';
 const axios = require('axios');
 
 
-const LoginForm = () => {
+const LoginForm = (props) => {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
-    let [userEmail, setUserEmail] = useState();
 
     const ctx = useContext(UserContext)
 
@@ -25,9 +24,8 @@ const LoginForm = () => {
         const login = async () => {
             try {
                 const res = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCqoI5B02Xkih4XOtXoaDuEbK_WC6yShJ4', loginData);
-                setUserEmail(res.data.email);
                 ctx.email = res.data.email;
-                ctx.isLoggedIn = true;
+                props.toggle()
             } catch (err) {
                 console.error(err);
             }

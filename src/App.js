@@ -1,10 +1,27 @@
-import {BrowserRouter} from 'react-router-dom'
-import Homepage from './components/Homepage/Homepage';
+import LoginForm from './components/loginForm';
+import { Routes, Route } from 'react-router-dom'
+import UserContext from './store/userContext';
+import { useState } from 'react'
+import  Homepage  from './components/Homepage/Homepage'
+
+
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  function toggleState() {
+    setIsLoggedIn(!isLoggedIn)
+  }
+
   return (
-    <div className="App">
-<Homepage />
-    </div>
+    <UserContext.Provider value={{
+      email: '',
+      vacations: [],
+    }}>
+
+        {!isLoggedIn && <LoginForm toggle={toggleState} />}
+        {isLoggedIn && <Homepage/> }
+
+    </ UserContext.Provider>
   );
 }
 

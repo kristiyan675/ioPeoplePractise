@@ -6,6 +6,7 @@ import {
   Col,
   ListGroup,
 } from "react-bootstrap";
+import {Link} from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 import classes from "./Homepage.module.scss";
 const Homepage = (props) => {
@@ -14,7 +15,7 @@ const Homepage = (props) => {
       <Navigation />
       <Container>
         <Row className={classes["header-content"]}>
-          <Col className=' py-5'>
+          <Col className=" py-5">
             <Accordion>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>Currently on vacation</Accordion.Header>
@@ -30,7 +31,9 @@ const Homepage = (props) => {
             <h1>
               Hi there, @user <br /> You have 100 vacation hours
             </h1>
-            <Button>Create a new vacation</Button>{" "}
+     
+              <Link to='/vacation'><Button>Create a new vacation</Button></Link>
+         
           </Col>
         </Row>
       </Container>

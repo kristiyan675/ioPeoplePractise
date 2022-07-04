@@ -1,9 +1,18 @@
-import { Button } from "react-bootstrap";
+import LoginForm from './components/loginForm';
+import { Router, Route } from 'react-router-dom'
+import UserContext from './store/userContext';
+
 function App() {
+
   return (
-    <div className="App">
-      <Button variant="primary">Primary</Button>
-    </div>
+    <UserContext.Provider value={{
+      email: '',
+      vacations: [],
+      isLoggedIn: false
+    }}>
+      {!UserContext.isLoggedIn && <LoginForm />}
+      {UserContext.isLoggedIn && <p>User Logged in</p>}
+    </ UserContext.Provider>
   );
 }
 

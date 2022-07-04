@@ -2,6 +2,7 @@ import LoginForm from './components/loginForm';
 import { Routes, Route } from 'react-router-dom'
 import UserContext from './store/userContext';
 import { useState } from 'react'
+import  Homepage  from './components/Homepage/Homepage'
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     }}>
 
         {!isLoggedIn && <LoginForm toggle={toggleState} />}
-        {isLoggedIn && <p>User Logged in</p>}
+        {isLoggedIn && <Homepage/> }
 
     </ UserContext.Provider>
   );

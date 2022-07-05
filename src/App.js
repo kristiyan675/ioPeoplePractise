@@ -5,6 +5,7 @@ import Homepage from "./components/Homepage/Homepage";
 import { useReducer, useEffect } from "react";
 
 const authReducer = (state, action) => {
+  console.log(action.payload, "payload");
   switch (action.type) {
     case "login":
       return {
@@ -20,7 +21,6 @@ const authReducer = (state, action) => {
   }
 };
 function App() {
-
   const [state, dispatch] = useReducer(authReducer, {
     token: "",
     email: "",
@@ -28,6 +28,22 @@ function App() {
     isLoggedIn: false,
     refreshToken: "",
   });
+
+  useEffect(() => {
+    const isAuth = window.localStorage.getItem("authToken");
+    if (isAuth) {
+      const savedAuthData = JSON.parse(isAuth);
+      dispatch({
+        type: "login",
+        payload: {
+          email: savedAuthData.email,
+          refreshToken: savedAuthData.refreshToken,
+          token: savedAuthData.token,
+          vacations: savedAuthData.vacations,
+        },
+      });
+    }
+  }, []);
 
   return (
     <UserContext.Provider
@@ -37,7 +53,10 @@ function App() {
       }}
     >
       <Routes>
-        <Route path='/' element={!state.isLoggedIn ? <LoginForm /> : <Homepage />} />
+        <Route
+          path="/"
+          element={!state.isLoggedIn ? <LoginForm /> : <Homepage />}
+        />
       </Routes>
     </UserContext.Provider>
   );

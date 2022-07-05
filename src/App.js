@@ -15,6 +15,15 @@ const authReducer = (state, action) => {
         token: action.payload.token,
         vacations: action.payload.vacations,
       };
+    case "logout":
+      return {
+        ...state,
+        email: "",
+        isLoggedIn: false,
+        refreshToken: "",
+        token: "",
+        vacations: [],
+      };
     default:
       return state;
   }

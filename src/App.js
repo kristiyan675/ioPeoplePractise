@@ -4,6 +4,7 @@ import UserContext from "./store/userContext";
 import Homepage from "./components/Homepage/Homepage";
 import Documents from "./components/Documents/Documents";
 import ProtectedRoutes from "./store/ProtectedRouts";
+import Profile from "./components/Profile/Profile";
 import { useEffect, useReducer } from "react";
 
 const authReducer = (state, action) => {
@@ -58,7 +59,7 @@ function App() {
     <Routes>
     <Route path="/" element={!state.isLoggedIn ? <LoginForm /> : <Homepage/>} />
     <Route element={<ProtectedRoutes/>}>
-    <Route path="/profile" element={<Homepage/>}/>
+    <Route path="/profile" element={<Profile/>}/>
     <Route path="/vacations" element={<Homepage/>}/>
     <Route path="/documents" element={<Documents/>}/>
     <Route path="/contacts" element={<Homepage/>}/>

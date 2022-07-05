@@ -16,7 +16,7 @@ const Vacations = (props) => {
         vacationValues = vacationValues[1].vacations.filter(
           (vacation) => vacation !== null
         );
-        console.log(vacationValues, 'valus')
+        console.log(vacationValues, "valus");
         ctx.dispatch({
           type: "set-vactions",
           payload: {
@@ -27,21 +27,38 @@ const Vacations = (props) => {
         console.log(error);
       }
     };
-    fetchVacations()
-    console.log(ctx.state.vacations, 'vacations')
-
+    fetchVacations();
+    console.log(ctx.state.vacations, "vacations");
   }, []);
   return (
     <React.Fragment>
-      <ul>
-        {ctx.state.vacations.length > 0 ? (
-          ctx.state.vacations.map((vacation, index) => {
-            return <li>{vacation.from}</li>;
-          })
-        ) : (
-          <h1>No vacations</h1>
-        )}
-      </ul>
+      <Table responsive>
+        <thead>
+          <tr>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            {Array.from({ length: 12 }).map((_, index) => (
+              <td key={index}>Table cell {index}</td>
+            ))}
+          </tr>
+          <tr>
+            <td>2</td>
+            {Array.from({ length: 12 }).map((_, index) => (
+              <td key={index}>Table cell {index}</td>
+            ))}
+          </tr>
+          <tr>
+            <td>3</td>
+            {Array.from({ length: 12 }).map((_, index) => (
+              <td key={index}>Table cell {index}</td>
+            ))}
+          </tr>
+        </tbody>
+      </Table>
     </React.Fragment>
   );
 };

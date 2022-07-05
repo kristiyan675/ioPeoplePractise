@@ -6,9 +6,9 @@ import { useState, useReducer } from "react";
 import Vacations from "./components/Vacations/Vacations";
 
 const authReducer = (state, action) => {
+  console.log(action.payload, "payload");
   switch (action.type) {
     case "login":
-      console.log("loggining");
       return {
         ...state,
         email: action.payload.email,
@@ -29,6 +29,22 @@ function App() {
     isLoggedIn: false,
     refreshToken: "",
   });
+
+  useEffect(() => {
+    const isAuth = window.localStorage.getItem("authToken");
+    if (isAuth) {
+      const savedAuthData = JSON.parse(isAuth);
+      dispatch({
+        type: "login",
+        payload: {
+          email: savedAuthData.email,
+          refreshToken: savedAuthData.refreshToken,
+          token: savedAuthData.token,
+          vacations: savedAuthData.vacations,
+        },
+      });
+    }
+  }, []);
 
   return (
     <UserContext.Provider

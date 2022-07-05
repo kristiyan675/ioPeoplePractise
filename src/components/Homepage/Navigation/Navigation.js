@@ -9,7 +9,7 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../../../images/logo.svg";
 import "./Navigation.scss";
-import classes from "./Navigation.module.scss";
+
 const Navigation = (props) => {
   return (
     <Navbar expand="lg" bg="primary" variant="dark">
@@ -27,7 +27,7 @@ const Navigation = (props) => {
             <NavLink to="/" className="nav-link">
               Profile
             </NavLink>
-            <NavLink to="/" className="nav-link">
+            <NavLink to="/vacations" className="nav-link">
               My vacations
             </NavLink>
             <NavLink to="/" className="nav-link">

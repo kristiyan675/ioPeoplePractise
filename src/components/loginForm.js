@@ -31,9 +31,9 @@ const LoginForm = (props) => {
             token: res.data.idToken,
             email: res.data.email,
             isLoggedIn: true,
-            refreshToken: res.data.refreshToken
-          })
-          localStorage.setItem('authToken', `${data}`)
+            refreshToken: res.data.refreshToken,
+          });
+          localStorage.setItem("authToken", `${data}`);
           userCtx.dispatch({
             type: "login",
             payload: {

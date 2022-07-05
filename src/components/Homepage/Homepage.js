@@ -35,7 +35,7 @@ const Homepage = (props) => {
             </h1>
      
               <Link to='/vacation'><Button className="outline-secondary">Create a new vacation</Button></Link>
-          <Documents />
+          
           </Col>
         </Row>
       </Container>

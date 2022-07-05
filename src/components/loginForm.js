@@ -1,15 +1,13 @@
-import { Form, Button } from "react-bootstrap";
-import { useRef, useState, useContext } from "react";
-import UserContext from "../store/userContext";
-import './loginForm.scss'
-
-const axios = require("axios");
+import { Form, Button } from 'react-bootstrap'
+import { useRef, useContext } from 'react'
+import UserContext from '../store/userContext';
+const axios = require('axios');
 
 const LoginForm = (props) => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
-  const ctx = useContext(UserContext);
+    const userCtx = useContext(UserContext);
 
   const loginSubmitHandler = (e) => {
     e.preventDefault();
@@ -22,25 +20,25 @@ const LoginForm = (props) => {
       returnSecureToken: true,
     };
 
-    const login = async () => {
-      try {
-        const res = await axios.post(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCqoI5B02Xkih4XOtXoaDuEbK_WC6yShJ4",
-          loginData
-        );
-        ctx.email = res.data.email;
-        props.toggle();
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    login();
-  };
+        const login = async () => {
+            try {
+                const res = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCqoI5B02Xkih4XOtXoaDuEbK_WC6yShJ4', loginData);
+                if (res.status === 200) {
+                    userCtx.token = res.data.idToken
+                    userCtx.email = res.data.email
+                    userCtx.isLogged = true
+                    userCtx.refreshToken = res.data.refreshToken
+                    props.toggle()
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        login();
+    }
 
-  return (
-    <div className="d-flex container vh-100 justify-content-center align-items-center">
-      <div className="row vh-100 justify-content-center align-items-center text-styles">
-          <Form onSubmit={loginSubmitHandler}>
+    return (
+        <Form onSubmit={loginSubmitHandler}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label className="display-6">Email address</Form.Label>
               <Form.Control
@@ -68,8 +66,7 @@ const LoginForm = (props) => {
               LogIn
             </Button>
           </Form>
-        </div>
-      </div>
+       
     
   );
 };

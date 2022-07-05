@@ -6,24 +6,26 @@ import { useState, useReducer, useEffect } from "react";
 import Vacations from "./components/Vacations/Vacations";
 
 const userReducer = (state, action) => {
-  if (action.type === "login") {
-    return {
-      ...state,
-      email: action.payload.email,
-      isLoggedIn: true,
-      refreshToken: action.payload.refreshToken,
-      token: action.payload.token,
-      vacations: action.payload.vacations ? [...action.payload.vacations] : [],
-    };
-  } else if (action.type === "set-vactions") {
-
-    return {
-      ...state,
-      vacations: [...action.payload.vacations],
-    };
+  switch (action.type) {
+    case "login":
+      return {
+        ...state,
+        email: action.payload.email,
+        isLoggedIn: true,
+        refreshToken: action.payload.refreshToken,
+        token: action.payload.token,
+        vacations: action.payload.vacations
+          ? [...action.payload.vacations]
+          : [],
+      };
+    case "set-vactions":
+      return {
+        ...state,
+        vacations: [...action.payload.vacations],
+      };
+    default:
+      return state;
   }
-  return state;
-
 };
 function App() {
   const [state, dispatch] = useReducer(userReducer, {

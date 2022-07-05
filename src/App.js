@@ -5,7 +5,6 @@ import Homepage from "./components/Homepage/Homepage";
 import { useReducer, useEffect } from "react";
 
 const authReducer = (state, action) => {
-  console.log(action.payload, "payload");
   switch (action.type) {
     case "login":
       return {
@@ -30,7 +29,7 @@ function App() {
   });
 
   useEffect(() => {
-    const isAuth = window.localStorage.getItem("authToken");
+    const isAuth = localStorage.getItem("authToken");
     if (isAuth) {
       const savedAuthData = JSON.parse(isAuth);
       dispatch({

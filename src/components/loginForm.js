@@ -1,12 +1,10 @@
 import { Form, Button } from 'react-bootstrap'
 import { useRef, useContext } from 'react'
 import UserContext from '../store/userContext';
-import { useNavigate } from 'react-router-dom'
 const axios = require('axios');
 
 
-const LoginForm = () => {
-    let navigate = useNavigate();
+const LoginForm = (props) => {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
@@ -31,6 +29,7 @@ const LoginForm = () => {
                     userCtx.email = res.data.email
                     userCtx.isLogged = true
                     userCtx.refreshToken = res.data.refreshToken
+                    props.toggle()
                 }
             } catch (err) {
                 console.error(err);

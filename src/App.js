@@ -2,12 +2,11 @@ import LoginForm from "./components/loginForm";
 import { Routes, Route } from "react-router-dom";
 import UserContext from "./store/userContext";
 import Homepage from "./components/Homepage/Homepage";
-import { useState, useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
 const authReducer = (state, action) => {
   switch (action.type) {
     case "login":
-      console.log("loggining");
       return {
         ...state,
         email: action.payload.email,
@@ -21,7 +20,7 @@ const authReducer = (state, action) => {
   }
 };
 function App() {
-  
+
   const [state, dispatch] = useReducer(authReducer, {
     token: "",
     email: "",
@@ -37,8 +36,9 @@ function App() {
         dispatch,
       }}
     >
-      {!state.isLoggedIn && <LoginForm />}
-      {state.isLoggedIn && <Homepage />}
+      <Routes>
+        <Route path='/' element={!state.isLoggedIn ? <LoginForm /> : <Homepage />} />
+      </Routes>
     </UserContext.Provider>
   );
 }

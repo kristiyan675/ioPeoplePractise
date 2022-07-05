@@ -1,42 +1,56 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
-import { useState } from 'react'
+import LoginForm from "./components/loginForm";
+import { Routes, Route, Navigate } from "react-router-dom";
+import UserContext from "./store/userContext";
+import Homepage from "./components/Homepage/Homepage";
+import Documents from "./components/Documents/Documents";
+import ProtectedRoutes from "./store/ProtectedRouts";
+import { useState, useReducer } from "react";
 
-import UserContext from './store/userContext';
-import Homepage from './components/Homepage/Homepage'
-import LoginForm from './components/loginForm';
-import Navigation from './components/Homepage/Navigation/Navigation';
-import Documents from './components/Documents/Documents'
-
-
-
+const authReducer = (state, action) => {
+  switch (action.type) {
+    case "login":
+      console.log("loggining");
+      return {
+        ...state,
+        email: action.payload.email,
+        isLoggedIn: true,
+        refreshToken: action.payload.refreshToken,
+        token: action.payload.token,
+        vacations: action.payload.vacations,
+      };
+    default:
+      return state;
+  }
+};
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // function toggleState() {
-  //   setIsLoggedIn(!isLoggedIn);
-  // }
+  
+  const [state, dispatch] = useReducer(authReducer, {
+    token: "",
+    email: "",
+    vacations: [],
+    isLoggedIn: false,
+    refreshToken: "",
+  });
 
   return (
-  //   <UserContext.Provider value={{
-  //     token: '',
-  //     email: '',
-  //     vacations: [],
-  //     isLoggedIn: false,
-  //     refreshToken: ''
-  //   }}>
-
+    <UserContext.Provider
+      value={{
+        state,
+        dispatch,
+      }}
+    >
+     
     
-  //   {!isLoggedIn && <LoginForm toggle={toggleState} />}
-  // {isLoggedIn && <Homepage/> } 
-
     <Routes>
-      <Route path="/" element={<LoginForm/>}/>
-      <Route path="/homepage" element={<Homepage/>}/>
-      <Route path="/profile" element={<Homepage/>}/>
-      <Route path="/vacations" element={<Homepage/>}/>
-      <Route path="/documents" element={<Documents/>}/>
-      <Route path="/contacts" element={<Documents/>}/>
-    </Routes>
-    // </ UserContext.Provider>
+    <Route path="/" element={!state.isLoggedIn ? <LoginForm /> : <Homepage/>} />
+    <Route element={<ProtectedRoutes/>}>
+    <Route path="/profile" element={<Homepage/>}/>
+    <Route path="/vacations" element={<Homepage/>}/>
+    <Route path="/documents" element={<Documents/>}/>
+    <Route path="/contacts" element={<Homepage/>}/>
+    </Route>
+  </Routes>
+  </UserContext.Provider>
   );
 }
 

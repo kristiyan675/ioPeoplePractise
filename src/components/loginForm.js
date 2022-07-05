@@ -1,14 +1,16 @@
 import { Form, Button } from 'react-bootstrap'
-import { useRef, useState, useContext } from 'react'
+import { useRef, useContext } from 'react'
 import UserContext from '../store/userContext';
+import { useNavigate } from 'react-router-dom'
 const axios = require('axios');
 
 
-const LoginForm = (props) => {
+const LoginForm = () => {
+    let navigate = useNavigate();
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
-    const ctx = useContext(UserContext)
+    const userCtx = useContext(UserContext);
 
     const loginSubmitHandler = (e) => {
         e.preventDefault();
@@ -24,14 +26,17 @@ const LoginForm = (props) => {
         const login = async () => {
             try {
                 const res = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCqoI5B02Xkih4XOtXoaDuEbK_WC6yShJ4', loginData);
-                ctx.email = res.data.email;
-                props.toggle()
+                if (res.status === 200) {
+                    userCtx.token = res.data.idToken
+                    userCtx.email = res.data.email
+                    userCtx.isLogged = true
+                    userCtx.refreshToken = res.data.refreshToken
+                }
             } catch (err) {
                 console.error(err);
             }
-        };
+        }
         login();
-
     }
 
     return (

@@ -6,9 +6,10 @@ import {
   Button,
   NavDropdown,
 } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { BrowserRouter, Link, NavLink, Route, Routes } from "react-router-dom";
 import Logo from "../../../images/logo.svg";
 import "./Navigation.scss";
+import Documents from "../../Documents/Documents";
 
 // import classes from "./Navigation.module.scss";
 const Navigation = (props) => {
@@ -44,10 +45,9 @@ const Navigation = (props) => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        
       </Container>
-      
     </Navbar>
+    
   );
 };
 

@@ -9,6 +9,7 @@ import {
 import {Link} from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 import classes from "./Homepage.module.scss";
+
 const Homepage = (props) => {
   return (
     <header className={classes.header}>
@@ -32,7 +33,7 @@ const Homepage = (props) => {
               Hi there, @user <br /> You have 100 vacation hours
             </h1>
      
-              <Link to='/vacation'><Button>Create a new vacation</Button></Link>
+              <Link to='/vacation'><Button className="outline-secondary">Create a new vacation</Button></Link>
          
           </Col>
         </Row>

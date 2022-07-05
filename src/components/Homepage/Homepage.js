@@ -34,7 +34,7 @@ const Homepage = (props) => {
               Hi there, @user <br /> You have 100 vacation hours
             </h1>
      
-              <Link to='/vacation'><Button className="outline-secondary">Create a new vacation</Button></Link>
+              <Link to='/vacations'><Button className="outline-secondary">Create a new vacation</Button></Link>
           
           </Col>
         </Row>

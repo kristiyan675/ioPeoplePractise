@@ -8,11 +8,22 @@ $btn-default-color: #ED7F53;
 $input-default-color: #f7f7f7;
 $input-border-default-color: #f7f7f7;
 
+
 //Custom styling
 $padding-base-vertical: 10px;
 $border-width: 5px;
 $border-radius-base: 50px;
 $btn-border-radius-base: 50px;
+
+//Table variables
+$table-color: $light;
+
+
+//Accordion variables
+$accordion-button-bg: #ED7F53;
+$accordion-bg: #f7f7f7;
+$accordion-color: #f7f7f7;
+$accordion-border-color: rgba($secondary, .125);
 
 //Custom Font variables
 $font-family-sans-serif: "TT Commons Pro", Helvetica, sans-serif;

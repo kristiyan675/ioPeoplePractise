@@ -1,11 +1,18 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import Navigation from "../Homepage/Navigation/Navigation";
 import { Table } from "react-bootstrap";
 
 const Vacations = (props) => {
+   
     useEffect(() => {
           
     },[])
-  return <h1>Vacations</h1>;
+  return (
+    <React.Fragment>
+       <Navigation />
+       <h1>Vacations</h1>;
+    </React.Fragment>
+  )
 };
 
 export default Vacations;

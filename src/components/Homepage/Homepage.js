@@ -13,7 +13,7 @@ import { useContext, useEffect, useCallback } from "react";
 import UserContext from "../../store/userContext";
 const Homepage = (props) => {
   const ctx = useContext(UserContext);
- 
+
   return (
     <header className={classes.header}>
       <Navigation />
@@ -33,13 +33,11 @@ const Homepage = (props) => {
           </Col>
           <Col className="d-flex align-items-end py-5 flex-column justify-content-center">
             <h1>
-              Hi there, ${ctx.state.email}
+              Hi there, @{ctx.state.email}
               <br /> You have 100 vacation hours
             </h1>
 
-            <Link to="/vacation">
-              <Button>Create a new vacation</Button>
-            </Link>
+            <Button>Create a new vacation</Button>
           </Col>
         </Row>
       </Container>

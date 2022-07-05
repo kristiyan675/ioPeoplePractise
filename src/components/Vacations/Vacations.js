@@ -6,16 +6,16 @@ const Vacations = (props) => {
   const ctx = useContext(UserContext);
   //   console.log(ctx);
   useEffect(() => {
-    console.log(ctx.state.token);
+   
     const fetchVacations = async () => {
       const response = await axios.get(
-        "https://react-http-e729c-default-rtdb.europe-west1.firebasedatabase.app/vacations.json",
-        {
-          headers: {
-            Authorization: "Bearer " + ctx.state.token,
-          },
-        }
+        "https://react-http-e729c-default-rtdb.europe-west1.firebasedatabase.app/vacations.json"
       );
+      let vacationValues = Object.entries(response.data)[0];
+      vacationValues = vacationValues[1].vacations.filter(
+        (vacation) => vacation !== null
+      );
+      
     };
     fetchVacations();
   }, []);

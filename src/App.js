@@ -4,12 +4,11 @@ import UserContext from "./store/userContext";
 import Homepage from "./components/Homepage/Homepage";
 import Documents from "./components/Documents/Documents";
 import ProtectedRoutes from "./store/ProtectedRouts";
-import { useState, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 
 const authReducer = (state, action) => {
   switch (action.type) {
     case "login":
-      console.log("loggining");
       return {
         ...state,
         email: action.payload.email,
@@ -23,7 +22,6 @@ const authReducer = (state, action) => {
   }
 };
 function App() {
-  
   const [state, dispatch] = useReducer(authReducer, {
     token: "",
     email: "",
@@ -31,6 +29,22 @@ function App() {
     isLoggedIn: false,
     refreshToken: "",
   });
+
+  useEffect(() => {
+    const isAuth = localStorage.getItem("authToken");
+    if (isAuth) {
+      const savedAuthData = JSON.parse(isAuth);
+      dispatch({
+        type: "login",
+        payload: {
+          email: savedAuthData.email,
+          refreshToken: savedAuthData.refreshToken,
+          token: savedAuthData.token,
+          vacations: savedAuthData.vacations,
+        },
+      });
+    }
+  }, []);
 
   return (
     <UserContext.Provider

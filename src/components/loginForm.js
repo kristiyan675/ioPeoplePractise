@@ -27,6 +27,13 @@ const LoginForm = (props) => {
           loginData
         );
         if (res.status === 200) {
+          const data = JSON.stringify({
+            token: res.data.idToken,
+            email: res.data.email,
+            isLoggedIn: true,
+            refreshToken: res.data.refreshToken
+          })
+          localStorage.setItem('authToken', `${data}`)
           userCtx.dispatch({
             type: "login",
             payload: {
@@ -36,7 +43,7 @@ const LoginForm = (props) => {
               refreshToken: res.data.refreshToken,
             },
           });
-  
+
         }
       } catch (err) {
         console.error(err);

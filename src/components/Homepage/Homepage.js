@@ -6,10 +6,14 @@ import {
   Col,
   ListGroup,
 } from "react-bootstrap";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 import classes from "./Homepage.module.scss";
+import { useContext, useEffect, useCallback } from "react";
+import UserContext from "../../store/userContext";
 const Homepage = (props) => {
+  const ctx = useContext(UserContext);
+ 
   return (
     <header className={classes.header}>
       <Navigation />
@@ -29,11 +33,13 @@ const Homepage = (props) => {
           </Col>
           <Col className="d-flex align-items-end py-5 flex-column justify-content-center">
             <h1>
-              Hi there, @user <br /> You have 100 vacation hours
+              Hi there, ${ctx.state.email}
+              <br /> You have 100 vacation hours
             </h1>
-     
-              <Link to='/vacation'><Button>Create a new vacation</Button></Link>
-         
+
+            <Link to="/vacation">
+              <Button>Create a new vacation</Button>
+            </Link>
           </Col>
         </Row>
       </Container>

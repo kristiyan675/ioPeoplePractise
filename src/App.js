@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import UserContext from "./store/userContext";
 import Homepage from "./components/Homepage/Homepage";
 import { useState, useReducer } from "react";
+import Vacations from "./components/Vacations/Vacations";
 
 const authReducer = (state, action) => {
   switch (action.type) {
@@ -21,7 +22,6 @@ const authReducer = (state, action) => {
   }
 };
 function App() {
-  
   const [state, dispatch] = useReducer(authReducer, {
     token: "",
     email: "",
@@ -37,8 +37,16 @@ function App() {
         dispatch,
       }}
     >
-      {!state.isLoggedIn && <LoginForm />}
-      {state.isLoggedIn && <Homepage />}
+      <Routes>
+        <Route
+          path="/"
+          element={!state.isLoggedIn ? <LoginForm /> : <Homepage />}
+        />
+         <Route
+          path="/vacations"
+          element={<Vacations />}
+        />
+      </Routes>
     </UserContext.Provider>
   );
 }

@@ -36,7 +36,6 @@ const LoginForm = (props) => {
               refreshToken: res.data.refreshToken,
             },
           });
-  
         }
       } catch (err) {
         console.error(err);

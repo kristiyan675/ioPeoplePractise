@@ -10,7 +10,8 @@ import {
   import Navigation from "../Homepage/Navigation/Navigation";
 
   const Documents = (props) => {
-    <header>
+    return(
+      <div>
       <Navigation />
       <Container>
         <Row>
@@ -24,11 +25,16 @@ import {
                 <Accordion.Header>Upcoming Birthdays</Accordion.Header>
                 <Accordion.Body>User3</Accordion.Body>
               </Accordion.Item>
+              <Accordion.Item eventKey="2">
+                <Accordion.Header>Maternity Leave</Accordion.Header>
+                <Accordion.Body>User3</Accordion.Body>
+              </Accordion.Item>
             </Accordion>
           </Col>
           </Row>
-      </Container>
-    </header>
+      </Container> 
+      </div>
+    )
   };
 
   export default Documents;

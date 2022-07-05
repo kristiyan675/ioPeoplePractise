@@ -1,8 +1,11 @@
 import LoginForm from './components/loginForm';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import UserContext from './store/userContext';
 import { useState } from 'react'
 import  Homepage  from './components/Homepage/Homepage'
+import Navigation from './components/Homepage/Navigation/Navigation';
+import Documents from './components/Documents/Documents'
+
 
 
 function App() {
@@ -18,9 +21,19 @@ function App() {
       vacations: [],
     }}>
 
-        {!isLoggedIn && <LoginForm toggle={toggleState} />}
-        {isLoggedIn && <Homepage/> }
 
+    
+    {/* {!isLoggedIn && <LoginForm toggle={toggleState} />} */}
+    {/* {isLoggedIn && <Homepage/> } */}
+
+    <Routes>
+      <Route path="/" element={<LoginForm/>}/>
+      <Route path="/homepage" element={<Homepage/>}/>
+      <Route path="/profile" element={<Homepage/>}/>
+      <Route path="/vacations" element={<Homepage/>}/>
+      <Route path="/documents" element={<Documents/>}/>
+      <Route path="/contacts" element={<Documents/>}/>
+    </Routes>
     </ UserContext.Provider>
   );
 }

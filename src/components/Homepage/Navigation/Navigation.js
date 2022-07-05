@@ -25,16 +25,16 @@ const Navigation = (props) => {
             <NavLink to="/" className="nav-link display-6">
               Home
             </NavLink>
-            <NavLink to="/" className="nav-link display-6">
+            <NavLink to="/profile" className="nav-link display-6">
               Profile
             </NavLink>
-            <NavLink to="/" className="nav-link display-6">
+            <NavLink to="/vacations" className="nav-link display-6">
               My vacations
             </NavLink>
-            <NavLink to="/" className="nav-link display-6">
+            <NavLink to="/documents" className="nav-link display-6">
               Docs
             </NavLink>
-            <NavLink to="/" className="nav-link display-6">
+            <NavLink to="/contacts" className="nav-link display-6">
               Contacts
             </NavLink>
             <NavDropdown

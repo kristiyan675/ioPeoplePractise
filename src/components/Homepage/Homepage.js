@@ -8,6 +8,7 @@ import {
 } from "react-bootstrap";
 import {Link} from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
+import Documents from "../Documents/Documents";
 import classes from "./Homepage.module.scss";
 
 const Homepage = (props) => {
@@ -34,7 +35,7 @@ const Homepage = (props) => {
             </h1>
      
               <Link to='/vacation'><Button className="outline-secondary">Create a new vacation</Button></Link>
-         
+          <Documents />
           </Col>
         </Row>
       </Container>

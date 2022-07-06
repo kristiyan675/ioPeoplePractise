@@ -1,3 +1,10 @@
+:root {
+  height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 //Custom Color variables
 $primary: #A13865;
 $secondary: #ED7F53;
@@ -7,12 +14,24 @@ $body-bg: #A13865;
 $btn-default-color: #ED7F53;
 $input-default-color: #f7f7f7;
 $input-border-default-color: #f7f7f7;
+$headings-color: #f7f7f7;
+
 
 //Custom styling
 $padding-base-vertical: 10px;
 $border-width: 5px;
-$border-radius-base: 50px;
-$btn-border-radius-base: 50px;
+$border-radius: 20px;
+$btn-border-radius: 20px;
+$btn-link-hover-color: #f7f7f7;
+
+//Table variables
+$table-color: $light;
+
+//Accordion variables
+$accordion-button-bg: #ED7F53;
+$accordion-bg: #f7f7f7;
+$accordion-color: #f7f7f7;
+$accordion-border-color: rgba($secondary, .125);
 
 //table styles
 
@@ -20,7 +39,6 @@ $btn-border-radius-base: 50px;
 $font-family-sans-serif: "TT Commons Pro", Helvetica, sans-serif;
 $secondary-font: "Reckless", "Nimbus Roman";
 $text-color: #f7f7f7;
-
 
 
 

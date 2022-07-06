@@ -1,40 +1,71 @@
 import {
-    Button,
-    Accordion,
-    Container,
-    Row,
-    Col,
-    ListGroup,
-  } from "react-bootstrap";
-  import {Routes, Route, Link} from "react-router-dom";
-  import Navigation from "../Homepage/Navigation/Navigation";
+  Button,
+  Accordion,
+  Container,
+  Row,
+  Col,
+  Card
+} from "react-bootstrap";
+import { Routes, Route, Link } from "react-router-dom";
+import Navigation from "../Homepage/Navigation/Navigation";
 
-  const Documents = (props) => {
-    return(
-      <div>
-      <Navigation />
-      <Container>
+
+const Documents = (props) => {
+  return (
+    <div>
+      <Container className="d-flex align-items-center align-self-center">
         <Row>
           <Col className=" py-5">
             <Accordion>
               <Accordion.Item eventKey="0">
-                <Accordion.Header>Currently on vacation</Accordion.Header>
-                <Accordion.Body>User1</Accordion.Body>
+                <Accordion.Header>Maternity Leave</Accordion.Header>
+                <Accordion.Body>
+                  <Card className="d-flex align-items-center align-self-center" style={{ width: "18rem" }}>
+                    <Card.Body>
+                      <Card.Title>Maternity Leave</Card.Title>
+                      <Card.Text>
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </Card.Text>
+                      <a href="logo192.png" download><Button variant="outline-secondary">Download</Button></a>
+                    </Card.Body>
+                  </Card>
+                </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">
-                <Accordion.Header>Upcoming Birthdays</Accordion.Header>
-                <Accordion.Body>User3</Accordion.Body>
+                <Accordion.Header>Paternity Leave</Accordion.Header>
+                <Accordion.Body>
+                <Card className="d-flex align-items-center align-self-center" style={{ width: "18rem" }}>
+                    <Card.Body>
+                      <Card.Title>Paternity Leave</Card.Title>
+                      <Card.Text>
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </Card.Text>
+                      <Button variant="outline-secondary">Download</Button>
+                    </Card.Body>
+                  </Card>
+                </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="2">
-                <Accordion.Header>Maternity Leave</Accordion.Header>
-                <Accordion.Body>User3</Accordion.Body>
+                <Accordion.Header>Getting Married Leave</Accordion.Header>
+                <Accordion.Body> <Card className="d-flex align-items-center align-self-center" style={{ width: "18rem" }}>
+                    <Card.Body>
+                      <Card.Title>Getting Married Leave</Card.Title>
+                      <Card.Text>
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </Card.Text>
+                      <Button variant="outline-secondary">Download</Button>
+                    </Card.Body>
+                  </Card></Accordion.Body>
               </Accordion.Item>
             </Accordion>
           </Col>
-          </Row>
-      </Container> 
-      </div>
-    )
-  };
+        </Row>
+      </Container>
+    </div>
+  );
+};
 
-  export default Documents;
+export default Documents;

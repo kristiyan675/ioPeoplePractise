@@ -7,6 +7,8 @@ import Vacations from "./components/Vacations/Vacations";
 import Documents from "./components/Documents/Documents";
 import ProtectedRoutes from "./store/ProtectedRouts";
 import Profile from "./components/Profile/Profile";
+import Layout from "./components/Layout";
+import { useEffect, useReducer } from "react";
 
 const authReducer = (state, action) => {
   switch (action.type) {
@@ -66,12 +68,14 @@ function App() {
   }, []);
 
   return (
+    <Layout>
     <UserContext.Provider
       value={{
         state,
         dispatch,
       }}
     >
+<<<<<<< HEAD
       <Routes>
         <Route
           path="/"
@@ -85,6 +89,20 @@ function App() {
         </Route>
       </Routes>
     </UserContext.Provider>
+=======
+    
+    <Routes>
+    <Route path="/" element={!state.isLoggedIn ? <LoginForm /> : <Homepage/>} />
+    <Route element={<ProtectedRoutes/>}>
+    <Route path="/profile" element={<Homepage/>}/>
+    <Route path="/vacations" element={<Homepage/>}/>
+    <Route path="/documents" element={<Documents/>}/>
+    <Route path="/contacts" element={<Homepage/>}/>
+    </Route>
+  </Routes>
+  </UserContext.Provider>
+  </Layout>
+>>>>>>> c61f3e4777dbc13c662caea6e044623469d29aa7
   );
 }
 

@@ -16,8 +16,7 @@ const Homepage = (props) => {
   const ctx = useContext(UserContext);
 
   return (
-    <header className={classes.header}>
-      <Navigation />
+    
       <Container>
         <Row className={classes["header-content"]}>
           <Col className=" py-5">
@@ -32,7 +31,7 @@ const Homepage = (props) => {
               </Accordion.Item>
             </Accordion>
           </Col>
-          <Col className="d-flex align-items-end py-5 flex-column justify-content-center">
+          <Col className="d-flex align-items-end py-5 flex-column justify-content-center color-light">
             <h1>
               Hi there, @{ctx.state.email}
               <br /> You have 100 vacation hours
@@ -42,7 +41,7 @@ const Homepage = (props) => {
           </Col>
         </Row>
       </Container>
-    </header>
+  
   );
 };
 

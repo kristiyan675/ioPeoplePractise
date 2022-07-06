@@ -13,7 +13,7 @@ import Navigation from "../Homepage/Navigation/Navigation";
 const Documents = (props) => {
   return (
     <div>
-      <Container className="d-flex align-items-center align-self-center">
+      <Container className="d-flex align-items-center align-self-center bs-body-bg-IOpurple">
         <Row>
           <Col className=" py-5">
             <Accordion>

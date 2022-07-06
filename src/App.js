@@ -4,6 +4,7 @@ import UserContext from "./store/userContext";
 import Homepage from "./components/Homepage/Homepage";
 import Documents from "./components/Documents/Documents";
 import ProtectedRoutes from "./store/ProtectedRouts";
+import Layout from "./components/Layout";
 import { useEffect, useReducer } from "react";
 
 const authReducer = (state, action) => {
@@ -47,13 +48,13 @@ function App() {
   }, []);
 
   return (
+    <Layout>
     <UserContext.Provider
       value={{
         state,
         dispatch,
       }}
     >
-     
     
     <Routes>
     <Route path="/" element={!state.isLoggedIn ? <LoginForm /> : <Homepage/>} />
@@ -65,6 +66,7 @@ function App() {
     </Route>
   </Routes>
   </UserContext.Provider>
+  </Layout>
   );
 }
 

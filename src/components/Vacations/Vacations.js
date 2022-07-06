@@ -9,7 +9,6 @@ const Vacations = (props) => {
     },[])
   return (
     <React.Fragment>
-       <Navigation />
        <h1>Vacations</h1>;
     </React.Fragment>
   )

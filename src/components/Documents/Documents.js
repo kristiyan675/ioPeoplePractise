@@ -13,7 +13,6 @@ import Navigation from "../Homepage/Navigation/Navigation";
 const Documents = (props) => {
   return (
     <div>
-      <Navigation />
       <Container className="d-flex align-items-center align-self-center">
         <Row>
           <Col className=" py-5">

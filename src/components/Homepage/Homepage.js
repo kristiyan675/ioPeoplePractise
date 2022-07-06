@@ -13,8 +13,7 @@ import classes from "./Homepage.module.scss";
 
 const Homepage = (props) => {
   return (
-    <header className={classes.header}>
-      <Navigation />
+    
       <Container>
         <Row className={classes["header-content"]}>
           <Col className=" py-5">
@@ -29,17 +28,17 @@ const Homepage = (props) => {
               </Accordion.Item>
             </Accordion>
           </Col>
-          <Col className="d-flex align-items-end py-5 flex-column justify-content-center">
+          <Col className="d-flex align-items-end py-5 flex-column justify-content-center color-light">
             <h1>
               Hi there, @user <br /> You have 100 vacation hours
             </h1>
      
-              <Link to='/vacations'><Button variant="outline-secondary">Create a new vacation</Button></Link>
+              <Link to='/vacations'><Button variant="outline-secondary" className="mt-3">Create a new vacation</Button></Link>
           
           </Col>
         </Row>
       </Container>
-    </header>
+  
   );
 };
 

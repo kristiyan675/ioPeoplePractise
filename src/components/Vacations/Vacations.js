@@ -33,8 +33,8 @@ const Vacations = (props) => {
   for (const key in vacations[0]) {
     headings.push(key);
   }
-  headings = headings.map((heading) => <th>{heading}</th>);
-
+  headings = headings.map((heading, index) => <th key={index}>{heading}</th>);
+console.log(vacations)
   return (
     <React.Fragment>
       <Table responsive>

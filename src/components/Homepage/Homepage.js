@@ -10,7 +10,8 @@ import {Link} from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 import Documents from "../Documents/Documents";
 import classes from "./Homepage.module.scss";
-
+import UserContext from "../../store/userContext";
+import { useContext } from "react";
 const Homepage = (props) => {
   const ctx = useContext(UserContext);
 

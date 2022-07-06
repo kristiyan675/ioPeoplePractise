@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from "react";
 import { Table } from "react-bootstrap";
-
+import UserContext from "../../store/userContext";
+import axios from "axios";
 const Vacations = (props) => {
   const ctx = useContext(UserContext);
-
-  //   console.log(ctx);
+  const vacations = ctx.state.vacations;
   useEffect(() => {
     const fetchVacations = async () => {
       try {
@@ -27,15 +27,19 @@ const Vacations = (props) => {
       }
     };
     fetchVacations();
-    console.log(ctx.state.vacations, "vacations");
   }, []);
+
+  let headings = [];
+  for (const key in vacations[0]) {
+    headings.push(key);
+  }
+  headings = headings.map((heading) => <th>{heading}</th>);
+
   return (
     <React.Fragment>
       <Table responsive>
         <thead>
-          <tr>
-            <th>#</th>
-          </tr>
+          <tr>{headings}</tr>
         </thead>
         <tbody>
           <tr>

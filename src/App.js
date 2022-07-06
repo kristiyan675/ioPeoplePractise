@@ -2,13 +2,13 @@ import LoginForm from "./components/loginForm";
 import { Routes, Route, Navigate } from "react-router-dom";
 import UserContext from "./store/userContext";
 import Homepage from "./components/Homepage/Homepage";
-import { useState, useReducer, useEffect } from "react";
+import {  useReducer, useEffect } from "react";
 import Vacations from "./components/Vacations/Vacations";
 import Documents from "./components/Documents/Documents";
 import ProtectedRoutes from "./store/ProtectedRouts";
 import Profile from "./components/Profile/Profile";
-import { useEffect, useReducer } from "react";
-const userReducer = (state, action) => {
+
+
   const authReducer = (state, action) => {
     switch (action.type) {
       case "login":
@@ -31,9 +31,9 @@ const userReducer = (state, action) => {
         return state;
     }
   };
-};
+
 function App() {
-  const [state, dispatch] = useReducer(userReducer, {
+  const [state, dispatch] = useReducer(authReducer, {
     token: "",
     email: "",
     vacations: [],

@@ -12,8 +12,9 @@ $input-border-default-color: #f7f7f7;
 //Custom styling
 $padding-base-vertical: 10px;
 $border-width: 5px;
-$border-radius-base: 50px;
-$btn-border-radius-base: 50px;
+$border-radius: 20px;
+$btn-border-radius: 20px;
+$btn-link-hover-color: #f7f7f7;
 
 //Table variables
 $table-color: $light;
@@ -29,7 +30,6 @@ $accordion-border-color: rgba($secondary, .125);
 $font-family-sans-serif: "TT Commons Pro", Helvetica, sans-serif;
 $secondary-font: "Reckless", "Nimbus Roman";
 $text-color: #f7f7f7;
-
 
 
 

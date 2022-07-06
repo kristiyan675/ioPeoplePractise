@@ -1,31 +1,35 @@
 import LoginForm from "./components/loginForm";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import UserContext from "./store/userContext";
 import Homepage from "./components/Homepage/Homepage";
 import { useState, useReducer, useEffect } from "react";
 import Vacations from "./components/Vacations/Vacations";
-
+import Documents from "./components/Documents/Documents";
+import ProtectedRoutes from "./store/ProtectedRouts";
+import { useEffect, useReducer } from "react";
 const userReducer = (state, action) => {
-  switch (action.type) {
-    case "login":
-      return {
-        ...state,
-        email: action.payload.email,
-        isLoggedIn: true,
-        refreshToken: action.payload.refreshToken,
-        token: action.payload.token,
-        vacations: action.payload.vacations
-          ? [...action.payload.vacations]
-          : [],
-      };
-    case "set-vactions":
-      return {
-        ...state,
-        vacations: [...action.payload.vacations],
-      };
-    default:
-      return state;
-  }
+  const authReducer = (state, action) => {
+    switch (action.type) {
+      case "login":
+        return {
+          ...state,
+          email: action.payload.email,
+          isLoggedIn: true,
+          refreshToken: action.payload.refreshToken,
+          token: action.payload.token,
+          vacations: action.payload.vacations
+            ? [...action.payload.vacations]
+            : [],
+        };
+      case "set-vactions":
+        return {
+          ...state,
+          vacations: [...action.payload.vacations],
+        };
+      default:
+        return state;
+    }
+  };
 };
 function App() {
   const [state, dispatch] = useReducer(userReducer, {
@@ -37,7 +41,7 @@ function App() {
   });
 
   useEffect(() => {
-    const isAuth = window.localStorage.getItem("authToken");
+    const isAuth = localStorage.getItem("authToken");
     if (isAuth) {
       const savedAuthData = JSON.parse(isAuth);
       dispatch({
@@ -64,8 +68,12 @@ function App() {
           path="/"
           element={!state.isLoggedIn ? <LoginForm /> : <Homepage />}
         />
-
-        <Route path="/vacations" element={<Vacations />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/profile" element={<Homepage />} />
+          <Route path="/vacations" element={<Vacations />} />
+          <Route path="/documents" element={<Documents />} />
+          <Route path="/contacts" element={<Homepage />} />
+        </Route>
       </Routes>
     </UserContext.Provider>
   );

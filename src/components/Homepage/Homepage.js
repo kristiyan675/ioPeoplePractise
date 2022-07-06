@@ -6,11 +6,11 @@ import {
   Col,
   ListGroup,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
+import Documents from "../Documents/Documents";
 import classes from "./Homepage.module.scss";
-import { useContext, useEffect, useCallback } from "react";
-import UserContext from "../../store/userContext";
+
 const Homepage = (props) => {
   const ctx = useContext(UserContext);
 

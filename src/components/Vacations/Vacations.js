@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { Table } from "react-bootstrap";
-import UserContext from "../../store/userContext";
-import axios from "axios";
+
 const Vacations = (props) => {
   const ctx = useContext(UserContext);
 

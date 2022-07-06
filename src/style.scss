@@ -1,1 +1,51 @@
-@import './node_modules/bootstrap/scss/bootstrap.scss'
+//Custom Color variables
+$primary: #A13865;
+$secondary: #ED7F53;
+$dark: #454545;
+$light: #f7f7f7;
+$body-bg: #A13865;
+$btn-default-color: #ED7F53;
+$input-default-color: #f7f7f7;
+$input-border-default-color: #f7f7f7;
+
+//Custom styling
+$padding-base-vertical: 10px;
+$border-width: 5px;
+$border-radius-base: 50px;
+$btn-border-radius-base: 50px;
+
+//Custom Font variables
+$font-family-sans-serif: "TT Commons Pro", Helvetica, sans-serif;
+$secondary-font: "Reckless", "Nimbus Roman";
+$text-color: #f7f7f7;
+
+
+
+
+//import the functions & variables
+@import './node_modules/bootstrap/scss/_functions';
+@import './node_modules/bootstrap/scss/_variables';
+
+$custom-theme-colors: (
+    "IOpurple": #A13865,
+    "IOorange": #ED7F53,
+    "IOdark": #454545,
+    "IOlight": #f7f7f7
+);
+
+$display-font-sizes: (
+  1: 4rem,
+  2: 3.5rem,
+  3: 3rem,
+  4: 2.5rem,
+  5: 2rem,
+  6: 1.5rem
+);
+
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+
+//import bootstrap
+@import './node_modules/bootstrap/scss/bootstrap.scss';
+

@@ -12,7 +12,16 @@ import "./Navigation.scss";
 import Documents from "../../Documents/Documents";
 
 // import classes from "./Navigation.module.scss";
+import { useContext } from "react";
+import UserContext from "../../../store/userContext";
 const Navigation = (props) => {
+  const ctx = useContext(UserContext);
+  const handleLogout = () => {
+    ctx.dispatch({
+      type: "logout",
+    });
+    window.localStorage.clear();
+  };
   return (
     <Navbar expand="lg" variant="dark" >
       <Container fluid>
@@ -41,7 +50,9 @@ const Navigation = (props) => {
               title={<Image src={Logo} width="30%" roundedCircle={true} />}
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item eventKey="1">Log Out</NavDropdown.Item>
+              <NavDropdown.Item eventKey="1" onClick={handleLogout}>
+                Log Out
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

@@ -6,7 +6,6 @@ import Navigation from "../Homepage/Navigation/Navigation";
 const Profile = () => {
     return (
         <>
-        <Navigation/>
         <div className='profile'>
             <Card className='border-0 mx-5 border-radius-20px' style={{ width: '25rem', height: '17rem'}}>
                 <Card.Header className='card-header'>Profile</Card.Header>

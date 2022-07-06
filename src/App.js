@@ -12,9 +12,9 @@ const authReducer = (state, action) => {
     case "login":
       return {
         ...state,
-        email: action.payload.email,
+        firstName: action.payload.firstName,
         isLoggedIn: true,
-        refreshToken: action.payload.refreshToken,
+        id: action.payload.id,
         token: action.payload.token,
         vacations: action.payload.vacations,
       };
@@ -25,10 +25,10 @@ const authReducer = (state, action) => {
 function App() {
   const [state, dispatch] = useReducer(authReducer, {
     token: "",
-    email: "",
+    firstName: "",
     vacations: [],
     isLoggedIn: false,
-    refreshToken: "",
+    id: "",
   });
 
   useEffect(() => {
@@ -38,8 +38,8 @@ function App() {
       dispatch({
         type: "login",
         payload: {
-          email: savedAuthData.email,
-          refreshToken: savedAuthData.refreshToken,
+          firstName: savedAuthData.firstName,
+          id: savedAuthData.id,
           token: savedAuthData.token,
           vacations: savedAuthData.vacations,
         },

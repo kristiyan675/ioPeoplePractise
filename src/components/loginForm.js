@@ -4,43 +4,43 @@ import UserContext from "../store/userContext";
 const axios = require("axios");
 
 const LoginForm = (props) => {
-  const emailInputRef = useRef();
+  const firstNameInputRef = useRef();
   const passwordInputRef = useRef();
 
   const userCtx = useContext(UserContext);
 
   const loginSubmitHandler = (e) => {
     e.preventDefault();
-    const enteredEmail = emailInputRef.current.value;
+    const enteredEmail = firstNameInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
     const loginData = {
-      email: enteredEmail,
-      password: enteredPassword,
-      returnSecureToken: true,
+      firstName: enteredEmail,
+      password: enteredPassword
     };
 
     const login = async () => {
       try {
         const res = await axios.post(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCqoI5B02Xkih4XOtXoaDuEbK_WC6yShJ4",
+          "https://vacationwebapi.azurewebsites.net/Auth",
           loginData
         );
         if (res.status === 200) {
+          console.log(res.data)
           const data = JSON.stringify({
-            token: res.data.idToken,
-            email: res.data.email,
+            token: res.data.token,
+            firstName: res.data.firstName,
             isLoggedIn: true,
-            refreshToken: res.data.refreshToken
+            id: res.data.id
           })
           localStorage.setItem('authToken', `${data}`)
           userCtx.dispatch({
             type: "login",
             payload: {
-              token: res.data.idToken,
-              email: res.data.email,
+              token: res.data.token,
+              firstName: res.data.firstName,
               isLoggedIn: true,
-              refreshToken: res.data.refreshToken,
+              id: res.data.id,
             },
           });
 
@@ -57,9 +57,7 @@ const LoginForm = (props) => {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
-          type="email"
-          placeholder="Enter email"
-          ref={emailInputRef}
+          ref={firstNameInputRef}
         />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.

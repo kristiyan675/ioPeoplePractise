@@ -6,6 +6,7 @@ import { useState, useReducer, useEffect } from "react";
 import Vacations from "./components/Vacations/Vacations";
 import Documents from "./components/Documents/Documents";
 import ProtectedRoutes from "./store/ProtectedRouts";
+import Profile from "./components/Profile/Profile";
 import { useEffect, useReducer } from "react";
 const userReducer = (state, action) => {
   const authReducer = (state, action) => {

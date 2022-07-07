@@ -8,16 +8,18 @@ import Documents from "./components/Documents/Documents";
 import ProtectedRoutes from "./store/ProtectedRouts";
 import Layout from "./components/Layout";
 import Profile from "./components/Profile/Profile";
-
+import Contacts from "./components/Contacts/Contacts";
 
 const authReducer = (state, action) => {
   switch (action.type) {
     case "login":
       return {
         ...state,
-        email: action.payload.email,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName,
+        address: action.payload.address,
         isLoggedIn: true,
-        refreshToken: action.payload.refreshToken,
+        id: action.payload.id,
         token: action.payload.token,
         vacations: action.payload.vacations
           ? [...action.payload.vacations]
@@ -31,9 +33,11 @@ const authReducer = (state, action) => {
     case "logout":
       return {
         ...state,
-        email: "",
+        firstName: "",
+        lastName: "",
+        address: "",
         isLoggedIn: false,
-        refreshToken: "",
+        id: "",
         token: "",
         vacations: [],
       };
@@ -45,10 +49,12 @@ const authReducer = (state, action) => {
 function App() {
   const [state, dispatch] = useReducer(authReducer, {
     token: "",
-    email: "",
+    firstName: "",
+    lastName: "",
+    address: "",
     vacations: [],
     isLoggedIn: false,
-    refreshToken: "",
+    id: "",
   });
 
   useEffect(() => {
@@ -58,8 +64,10 @@ function App() {
       dispatch({
         type: "login",
         payload: {
-          email: savedAuthData.email,
-          refreshToken: savedAuthData.refreshToken,
+          firstName: savedAuthData.firstName,
+          lastName: savedAuthData.lastName,
+          address: savedAuthData.address,
+          id: savedAuthData.id,
           token: savedAuthData.token,
           vacations: savedAuthData.vacations,
         },
@@ -69,24 +77,24 @@ function App() {
 
   return (
     <UserContext.Provider
-    value={{
-      state,
-      dispatch,
-    }}
+      value={{
+        state,
+        dispatch,
+      }}
     >
       <Layout>
-      <Routes>
-        <Route
-          path="/"
-          element={!state.isLoggedIn ? <LoginForm /> : <Homepage />}
-        />
-        <Route element={<ProtectedRoutes />}>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/vacations" element={<Vacations />} />
-          <Route path="/documents" element={<Documents />} />
-          <Route path="/contacts" element={<Homepage />} />
-        </Route>
-      </Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={!state.isLoggedIn ? <LoginForm /> : <Homepage />}
+          />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/vacations" element={<Vacations />} />
+            <Route path="/documents" element={<Documents />} />
+            <Route path="/contacts" element={<Contacts />} />
+          </Route>
+        </Routes>
       </Layout>
     </UserContext.Provider>
   );

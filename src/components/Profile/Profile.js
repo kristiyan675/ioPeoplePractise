@@ -29,7 +29,7 @@ const Profile = () => {
             <div className='d-flex flex-column align-item-between justify-content-between' style={{height: '17rem'}}>
                 <Image src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80' style={{ width: '10rem', height: '10rem', objectFit: 'cover', objectPosition:'center', marginTop:'20px'}} roundedCircle={true} fluid={true}/>
                 <div className='buttons d-flex justify-content-between'>
-                    <Button variant="outline-secondary "> Back </Button>
+                    <Button variant="outline-secondary " > Back </Button>
                     <Button variant="secondary"> Edit </Button>
                 </div>
             </div>

@@ -14,7 +14,7 @@ import UserContext from "../../store/userContext";
 import { useContext } from "react";
 const Homepage = (props) => {
   const ctx = useContext(UserContext);
-
+console.log(ctx.state.firstName)
   return (
     <Container>
       <Row className={classes["header-content"]}>
@@ -32,7 +32,7 @@ const Homepage = (props) => {
         </Col>
         <Col className="d-flex align-items-end py-5 flex-column justify-content-center color-light">
           <h1>
-            Hi there, @{ctx.state.email}
+            Hi there, @{ctx.state.firstName}
             <br /> You have 100 vacation hours
           </h1>
 
